@@ -12,7 +12,7 @@ namespace ariel{
             double getx() const;
             double gety() const;
             double distance(const Point& other);
-            Point moveTowards(Point& start,Point& end,double dis);
+            Point static moveTowards(Point& start,Point& end,double dis);
             friend bool operator==(const Point& lhs, const Point& rhs);
             
             };

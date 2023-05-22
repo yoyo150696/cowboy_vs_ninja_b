@@ -7,8 +7,13 @@ Character::Character(string tname,Point& tloc,int healthp){
     name = tname;
     loc = tloc;
     hp = healthp;
+    cap = false;
+    belong = false;
 }
-bool Character::isAlive(){return false;}
+bool Character::isAlive(){
+    if (hp > 0)
+        return true;
+    return false;}
 double Character::distance(Character *other){
     return 0;
 }

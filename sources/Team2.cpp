@@ -1,5 +1,5 @@
 #include "Team2.hpp"
 
-Team2::Team2(*pleader){
-    Team{pleader};
-}
+using namespace ariel;
+
+Team2::Team2(Character *pleader):Team{pleader}{}

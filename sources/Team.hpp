@@ -1,6 +1,9 @@
 #pragma once
 #include "Cowboy.hpp"
 #include "Ninja.hpp"
+#include "OldNinja.hpp"
+#include "YoungNinja.hpp"
+#include "TrainedNinja.hpp"
 #include <vector>
 
 namespace ariel{
@@ -14,6 +17,7 @@ namespace ariel{
         
     public:
         Team(Character *new_char);
+        Team();
         void add(Character *new_char);
         int stillAlive();
         void attack(Team *enemy_team);

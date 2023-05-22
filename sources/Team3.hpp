@@ -2,8 +2,8 @@
 #include "Team.hpp"
 
 namespace ariel{
-    class Team2 : public Team{
+    class Team3 : public Team{
         public:
-            Team2(Character *pleader);
+            Team3(Character *pleader);
     };
 }

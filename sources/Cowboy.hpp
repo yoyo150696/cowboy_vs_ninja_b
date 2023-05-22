@@ -5,6 +5,7 @@ namespace ariel{
     class Cowboy : public Character
     {
     private:
+        int boolets;
         int bs;
     public:
         Cowboy(std::string name,Point loc);

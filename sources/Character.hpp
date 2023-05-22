@@ -3,7 +3,7 @@
 #include <iostream>
 namespace ariel{
     class Character{
-        private:
+        protected:
             Point loc;
             std::string name;
             int hp;
@@ -18,7 +18,8 @@ namespace ariel{
             Point& getLocation();
             std::string print(); 
             int get_hp();
-        
+            bool cap;
+            bool belong;
 
     };
 }
