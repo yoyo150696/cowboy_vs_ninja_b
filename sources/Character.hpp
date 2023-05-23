@@ -4,11 +4,11 @@
 namespace ariel{
     class Character{
         protected:
-            Point loc;
             std::string name;
-            int hp;
 
         public:
+            int hp;
+            Point loc;
             Character();
             Character(std::string tname,Point& loc,int healthp);
             bool isAlive();
@@ -20,6 +20,7 @@ namespace ariel{
             int get_hp();
             bool cap;
             bool belong;
+            void damage();
 
     };
 }

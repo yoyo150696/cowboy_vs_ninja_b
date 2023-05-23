@@ -13,11 +13,16 @@ Character::Character(string tname,Point& tloc,int healthp){
 bool Character::isAlive(){
     if (hp > 0)
         return true;
-    return false;}
+    return false;
+    }
 double Character::distance(Character *other){
-    return 0;
+    return loc.distance(other->loc);
 }
-void Character::hit(int num){}
+void Character::hit(int num){
+    if(num < 0){
+        throw std::invalid_argument("neagative value.");
+    }
+}
 string Character::getName(){
     return name;
 }
@@ -29,4 +34,7 @@ string Character::print(){
 }
 int Character::get_hp(){
     return hp;
+}
+void Character::damage(){
+    hp -= 10;
 }

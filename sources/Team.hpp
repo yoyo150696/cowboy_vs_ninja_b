@@ -23,6 +23,8 @@ namespace ariel{
         void attack(Team *enemy_team);
         std::string print();
         int getsize();
+        Character* find(Character *_leader);
+        void nleader(Character *_leader);
     };
  
     
