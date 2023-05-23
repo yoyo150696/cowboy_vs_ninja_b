@@ -5,7 +5,9 @@ using namespace std;
 
 Cowboy::Cowboy(string tname,Point tloc):Character(tname,tloc,110){
     boolets = 6;
+    _cobwoy = true;
 }
+
     void Cowboy::shoot(Character* other){
         if(isAlive() &&  other->isAlive()&& this != other){
             if(hasboolets()){

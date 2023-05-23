@@ -12,6 +12,5 @@ namespace ariel{
         void shoot(Character* other);
         bool hasboolets();
         void reload();
-
     };
 }

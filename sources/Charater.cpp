@@ -9,6 +9,7 @@ Character::Character(string tname,Point& tloc,int healthp){
     hp = healthp;
     cap = false;
     belong = false;
+
 }
 bool Character::isAlive(){
     if (hp > 0)
@@ -29,7 +30,7 @@ string Character::getName(){
 Point& Character::getLocation(){
     return loc;
 }
-string Character::print(){
+std::string Character::print(){
     return "";
 }
 int Character::get_hp(){
@@ -37,4 +38,10 @@ int Character::get_hp(){
 }
 void Character::damage(){
     hp -= 10;
+}
+bool Character::isCowboy(){
+    return _cobwoy;
+}
+bool Character::isNinja(){
+    return _ninja;
 }

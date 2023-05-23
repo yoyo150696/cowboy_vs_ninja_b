@@ -475,10 +475,11 @@ TEST_SUITE("Battle simulations") {
         team.attack(&team2);
         CHECK((!trained_ninja->isAlive() && old_ninja->isAlive() &&
                young_ninja2->isAlive())); // No one should die in the attack
-
+        cout<<old_ninja->get_hp()<<"here";       
         multi_attack(2, team, team2);
         CHECK_FALSE(trained_ninja->isAlive()); // Trained ninja should be dead
         CHECK((!old_ninja->isAlive() && young_ninja2->isAlive()));
+        cout<<old_ninja->get_hp()<<"here";
 
         multi_attack(4, team, team2);
         CHECK_FALSE(old_ninja->isAlive()); // Old ninja should be dead

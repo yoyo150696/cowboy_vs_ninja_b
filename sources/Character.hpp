@@ -5,6 +5,8 @@ namespace ariel{
     class Character{
         protected:
             std::string name;
+            bool _cobwoy = false;
+            bool _ninja = false;
 
         public:
             int hp;
@@ -21,6 +23,8 @@ namespace ariel{
             bool cap;
             bool belong;
             void damage();
+            bool isCowboy();
+            bool isNinja();
 
     };
 }

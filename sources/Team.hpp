@@ -9,10 +9,11 @@
 namespace ariel{
     class Team
     {
-    private:
+    protected:
         Character *leader;
         std::vector<Character *> group;
         int size;
+        Character *victim;
 
         
     public:
@@ -25,6 +26,9 @@ namespace ariel{
         int getsize();
         Character* find(Character *_leader);
         void nleader(Character *_leader);
+        void cowboys_attack(Team *enemy_team);
+        void ninjas_attack(Team *enemy_team);
+
     };
  
     

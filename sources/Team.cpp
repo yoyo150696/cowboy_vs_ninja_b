@@ -28,7 +28,14 @@ void Team::add(Character *new_member){
     }
     new_member->belong = true;
 }
-int Team::stillAlive(){return size;}
+int Team::stillAlive(){
+    int s = 0;
+    for(Character *member : group){
+        if(member->isAlive())
+            s++;
+    }
+    return s;
+}
 void Team::attack(Team *enemy_team){
     if(enemy_team == NULL)
         throw std::invalid_argument("null ptr.");
@@ -36,10 +43,36 @@ void Team::attack(Team *enemy_team){
         Character *_leader= find(leader);
         nleader(_leader);
     }
-    Character *victim = enemy_team->find(leader);
-    
+    victim = enemy_team->find(leader);
+    cowboys_attack(enemy_team);
+    ninjas_attack(enemy_team);
 
 }
+
+void Team::cowboys_attack(Team *enemy_team){
+    for (Character *member : group) {        
+        if (!(victim->isAlive()))
+            victim = enemy_team->find(leader);
+        if(member->isCowboy()){
+            Cowboy *cowboy = static_cast<Cowboy *>(member);
+            cowboy->shoot(victim);
+        }
+    }
+}
+void Team::ninjas_attack(Team *enemy_team){
+    for (Character *member : group) {        
+        if (!(victim->isAlive()))
+            victim = enemy_team->find(leader);
+        if(member->isNinja()){
+            Ninja *ninja = static_cast<Ninja *>(member);
+            if (ninja->distance(victim) < 1)
+                ninja->slash(victim);
+            else
+                ninja->move(victim);
+        }
+    }
+}
+
 string Team::print(){return "";}
 int Team::getsize(){
     return size;
@@ -61,6 +94,4 @@ void Team::nleader(Character *_leader){
     leader->cap = false;
     leader = _leader;
     leader->cap = true;
-
-
 }
