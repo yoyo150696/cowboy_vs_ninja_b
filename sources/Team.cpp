@@ -15,8 +15,11 @@ Team::Team(Character *_leader){
 
 
 }
-Team::Team(){
-
+Team::Team(){}
+Team::~Team(){
+    for(Character *member : group)
+        delete member;
+    group.clear();    
 }
 void Team::add(Character *new_member){
     
@@ -37,11 +40,14 @@ int Team::stillAlive(){
     return s;
 }
 void Team::attack(Team *enemy_team){
+    Point a{5,0};
+    Point b{0,0};
     if(enemy_team == NULL)
         throw std::invalid_argument("null ptr.");
-    if(!leader->isAlive()){
+    if(!(leader->isAlive())){
         Character *_leader= find(leader);
         nleader(_leader);
+
     }
     victim = enemy_team->find(leader);
     cowboys_attack(enemy_team);
@@ -53,17 +59,20 @@ void Team::cowboys_attack(Team *enemy_team){
     for (Character *member : group) {        
         if (!(victim->isAlive()))
             victim = enemy_team->find(leader);
-        if(member->isCowboy()){
+        if(member->isCowboy()&&member->isAlive()){
             Cowboy *cowboy = static_cast<Cowboy *>(member);
-            cowboy->shoot(victim);
+            if(cowboy->hasboolets())
+                cowboy->shoot(victim);
+            else
+                cowboy->reload(); 
         }
     }
 }
 void Team::ninjas_attack(Team *enemy_team){
-    for (Character *member : group) {        
+    for (Character *member : group) {       
         if (!(victim->isAlive()))
             victim = enemy_team->find(leader);
-        if(member->isNinja()){
+        if(member->isNinja()&&member->isAlive()){
             Ninja *ninja = static_cast<Ninja *>(member);
             if (ninja->distance(victim) < 1)
                 ninja->slash(victim);
@@ -73,7 +82,11 @@ void Team::ninjas_attack(Team *enemy_team){
     }
 }
 
-string Team::print(){return "";}
+void Team::print(){
+    for(Character *member : group){
+        cout<<"team member "<<member->get_hp()<< " " <<member->isAlive()<< " loc - "<<member->getLocation().getx()<<","<<leader->getLocation().gety() <<endl;
+        }
+}
 int Team::getsize(){
     return size;
 }
@@ -82,9 +95,9 @@ Character* Team::find(Character *_leader){
     double dis = std::numeric_limits<double>::max();
     for (Character* member : group) {
         if(member != _leader && member->isAlive()){
-            if(leader->distance(member) < dis){
+            if(_leader->distance(member) < dis){
                 temp = member;
-                dis = leader->distance(member);
+                dis = _leader->distance(member);
             }
         }
     }
@@ -94,4 +107,6 @@ void Team::nleader(Character *_leader){
     leader->cap = false;
     leader = _leader;
     leader->cap = true;
+}
+void Team::print_captain(){
 }

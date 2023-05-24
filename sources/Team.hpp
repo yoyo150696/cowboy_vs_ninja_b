@@ -19,15 +19,17 @@ namespace ariel{
     public:
         Team(Character *new_char);
         Team();
+        ~Team();
         void add(Character *new_char);
         int stillAlive();
-        void attack(Team *enemy_team);
-        std::string print();
+        virtual void attack(Team *enemy_team);
+        virtual void print();
         int getsize();
         Character* find(Character *_leader);
         void nleader(Character *_leader);
         void cowboys_attack(Team *enemy_team);
         void ninjas_attack(Team *enemy_team);
+        void print_captain();
 
     };
  

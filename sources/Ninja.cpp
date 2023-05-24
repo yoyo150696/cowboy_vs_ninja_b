@@ -18,6 +18,6 @@ void Ninja::slash(Character *enemy){
         }
     }
     else{
-        throw std::runtime_error("");
+        throw std::runtime_error("ninja");
     }  
 }

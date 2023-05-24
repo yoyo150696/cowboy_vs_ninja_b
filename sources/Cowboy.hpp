@@ -10,7 +10,7 @@ namespace ariel{
     public:
         Cowboy(std::string name,Point loc);
         void shoot(Character* other);
-        bool hasboolets();
+        int hasboolets();
         void reload();
     };
 }

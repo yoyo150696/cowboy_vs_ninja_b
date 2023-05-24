@@ -16,13 +16,10 @@ Cowboy::Cowboy(string tname,Point tloc):Character(tname,tloc,110){
             }
         }
         else
-            throw std::runtime_error("");
+            throw std::runtime_error("cowboy");
 
     }
-    bool Cowboy::hasboolets(){
-    if (boolets > 0)    
-        return true;
-    return false;}
+    int Cowboy::hasboolets(){return boolets;}
     void Cowboy::reload(){
         if(!isAlive())
             throw std::runtime_error("dead cowboy.");
